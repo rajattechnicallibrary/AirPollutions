@@ -1,0 +1,7 @@
+{
+  "name": "AirPollutions",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
