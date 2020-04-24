@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title style="font-weight: 600; text-align: center;">
+      QR Scanner - Barcode Scanner
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar (click)="toggle()" [style.background-color]="color" style="text-align:center; padding: 11%;">
+    <img src="assets/icon/bulb.png" id="imgPlacement">
+  </ion-toolbar>
+  <ion-list>
+
+    <ion-row *ngIf="!scannedData">
+      <ion-col style="text-align: center; font-weight: 600;">
+        Tap QR Image to Scan
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="scannedData">
+      <ion-col style="text-align: center; font-weight: 600;">
+        {{scannedData}}
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

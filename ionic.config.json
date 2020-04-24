@@ -1,7 +1,8 @@
 {
   "name": "AirPollutions",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
