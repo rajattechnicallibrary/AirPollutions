@@ -8,14 +8,14 @@
       <ion-label color="primary">Air Pollution</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
-      <ion-icon name="square" color="primary"></ion-icon>
-      <ion-label color="primary">Search</ion-label>
+    <ion-tab-button tab="tab1" (click)="trackByMyLocation()">
+      <ion-icon name="locate" color="primary"></ion-icon>
+      <ion-label color="primary">Locate Me</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab1" (click)=exitapp()>
-      <ion-icon name="exit"></ion-icon>
-      <ion-label>Exit App</ion-label>
+    <ion-tab-button (click)=exitapp()>
+      <ion-icon name="exit" color="primary"></ion-icon>
+      <ion-label color="primary">Exit App</ion-label>
     </ion-tab-button>
 
   </ion-tab-bar>

@@ -1,26 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title style="font-weight: 600; text-align: center;">
-      QR Scanner - Barcode Scanner
+      Air Pollution - Air Quality Index 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-toolbar (click)="toggle()" [style.background-color]="color" style="text-align:center; padding: 11%;">
-    <img src="assets/icon/bulb.png" id="imgPlacement">
-  </ion-toolbar>
-  <ion-list>
+  <!-- {{mycolorcombo | json}} -->
+  <ion-card [ngStyle]="{'background-color':airQualityIndexType.bgcolor}" *ngIf="aqi"> 
+    <ion-card-header style="text-align: center;">
+      <ion-card-subtitle style="font-size: xx-large;" [ngStyle]="{'color':airQualityIndexType.color}">Air Quality Index</ion-card-subtitle>
+      <ion-card-title style="font-size: xx-large;" [ngStyle]="{'color':airQualityIndexType.color}" >{{aqi}}</ion-card-title>
+    </ion-card-header>
+    
+  </ion-card> 
+  <ion-card style="background-color: white;" *ngIf="mycity"> 
+    <ion-card-header style="text-align: center;">
+      <ion-card-subtitle style="font-size: xx-large;">Nearest AQI Device</ion-card-subtitle>
+      <ion-card-subtitle style="font-size: x-large;" [ngStyle]="{'color':airQualityIndexType.bgcolor}">{{mycity.name}}</ion-card-subtitle>
+      <ion-card-title style="font-size: x-large;" [ngStyle]="{'color':airQualityIndexType.bgcolor}">{{airQualityIndexType.name}}</ion-card-title>
+    </ion-card-header>
+  
+  </ion-card>
 
-    <ion-row *ngIf="!scannedData">
-      <ion-col style="text-align: center; font-weight: 600;">
-        Tap QR Image to Scan
-      </ion-col>
-    </ion-row>
-    <ion-row *ngIf="scannedData">
-      <ion-col style="text-align: center; font-weight: 600;">
-        {{scannedData}}
-      </ion-col>
-    </ion-row>
-  </ion-list>
+  
 </ion-content>
+    <ion-footer (click) ="trackByMyLocation()">
+      <ion-toolbar>
+        <ion-button expand="block">Locate Me   <ion-icon name="locate"></ion-icon></ion-button>
+      </ion-toolbar>
+    </ion-footer> 

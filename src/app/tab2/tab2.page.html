@@ -1,17 +1,49 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
+  <ion-toolbar color="primary">
+    <ion-title *ngIf="mycity">
+      {{mycity.name}}
+    </ion-title>
+    <ion-title *ngIf="!mycity">
+      Search Your City
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- <ion-row>
+    <ion-col>1</ion-col>
+    <ion-col>2</ion-col>
+    <ion-col>3</ion-col>
+  </ion-row> -->
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-searchbar [(ngModel)]="searchCountryString" (input)="searchCountry($event)" placeholder="Search"></ion-searchbar>
+  <ion-list *ngIf="!mycity">
+    <ion-item *ngFor="let country of countries" (click)="openMyindex($event, country)" >
+      <ion-label > {{country.station.name}} AQI - {{country.aqi}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="aqi && countries.length == 0 ">
+    <ion-item style="text-align: center;">
+      <ion-label> Not Found</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-card [ngStyle]="{'background-color':airQualityIndexType.bgcolor}" *ngIf="aqi">
+    <ion-card-header style="text-align: center;">
+      <ion-card-subtitle style="font-size: xx-large;" [ngStyle]="{'color':airQualityIndexType.color}">Air Quality Index
+      </ion-card-subtitle>
+      <ion-card-title style="font-size: xx-large;" [ngStyle]="{'color':airQualityIndexType.color}">{{aqi}}
+      </ion-card-title>
+    </ion-card-header>
+
+  </ion-card>
+  <ion-card style="background-color: white;" *ngIf="mycity">
+    <ion-card-header style="text-align: center;">
+      <ion-card-subtitle style="font-size: xx-large;">Nearest AQI Device</ion-card-subtitle>
+      <ion-card-subtitle style="font-size: x-large;" [ngStyle]="{'color':airQualityIndexType.bgcolor}">{{mycity.name}}
+      </ion-card-subtitle>
+      <ion-card-title style="font-size: x-large;" [ngStyle]="{'color':airQualityIndexType.bgcolor}">
+        {{airQualityIndexType.name}}</ion-card-title>
+    </ion-card-header>
+
+  </ion-card>
 </ion-content>
